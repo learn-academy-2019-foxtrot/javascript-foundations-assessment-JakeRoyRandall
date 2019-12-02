@@ -7,15 +7,22 @@
 // "385 is not divisble by three", "-7 is not divisble by three".
 
 const divBy3 = (num) => {
-      if (num % 3 === 0) {
-        return `${num} is divisble by 3`
-      } else {
-        return `${num} is not divisble by 3`
-      }
-}
+      if (num % 3 === 0) {return `${num} is divisble by 3`}
+      else {return `${num} is not divisble by 3`}}
 
 // Sanity checks for divBy3()
 // console.log(divBy3(15));
+// console.log(divBy3(0));
+// console.log(divBy3(385));
+// console.log(divBy3(-7));
+
+const divBy = (num1, num2) => {
+      if (num1 % num2 === 0) {return `${num1} is evenly divisble by ${num2}`}
+      else if (num1 % num2 > 0) {return `${num1} is not evenly divisble by ${num2}`}
+      else {return `Please enter two valid numbers`}}
+
+// Sanity checks for divBy3()
+// console.log(divBy(15, 3));
 // console.log(divBy3(0));
 // console.log(divBy3(385));
 // console.log(divBy3(-7));
@@ -28,9 +35,7 @@ var helloMe = {
     birthday: "August 9th",
     birthYear: 1991,
     aboutMe: function () {
-      return `Hello, my name is ${helloMe.firstname} ${helloMe.lastname} & I was born on ${helloMe.birthday} ${helloMe.birthYear}`
-    }
-  }
+      return `Hello, my name is ${helloMe.firstname} ${helloMe.lastname} & I was born on ${helloMe.birthday} ${helloMe.birthYear}`}}
 
 // console.log(helloMe.aboutMe());
 
@@ -50,8 +55,19 @@ const getOdd = (array) => {
       return oddArray.join(" ")
     }
 
+// const getEveryOther = (array) => {
+//           let oddArray = array.filter((v, i) => {
+//             if (i % 2 === 0) {
+//                 v.push(array[i])
+//                 return v.join(" ")
+//             }
+//           })
+//
+//         }
+
 // Sanity check for getOdd()
 // console.log(getOdd(randomNouns));
+// console.log(getEveryOther(randomNouns));
 
 // 3b. Create a function that takes in the variable and returns the array with all the words capitalized. Expected output: ["Streetlamp", "Potato", "Teeth", "Conclusion", "Nephew", "Temperature", "Database"]
 
@@ -59,8 +75,15 @@ const upperCaseArray = (array) => {
       return array.map(value => value.slice(0,1).toUpperCase() + value.slice(1))
     }
 
+const capitalizer = (array) => {
+      return array.map(value => {
+        return value[0].toUpperCase().concat(value.slice(1))
+      })
+}
+
 // Sanity Check for upperCaseArray()
 // console.log(upperCaseArray(randomNouns));
+// console.log(capitalizer(randomNouns));
 
 // 3c. STRETCH: Create a function that returns the length of each string from the randomNouns variable. Expected output: [10, 6, 5, 10, 6, 11, 8]
 
@@ -83,7 +106,10 @@ const alphabetSoup = (string) => {
       let tempString = string.split("")
       tempString = tempString.sort()
       return tempString.join("")
+      // return string.split("").sort().join("") **DUH**
     }
+
+
 
 // Sanity checks for alphabetSoup()
 // console.log(alphabetSoup(testString1));
@@ -99,8 +125,14 @@ const alphabetScramble = (str1, str2, str3) => {
       return tempString.join("")
     }
 
+const betterAlpabetSoup = (...strings) => {
+      return strings.join("").split("").sort().join("")
+      }
+
 // Sanity check for alphabetScramble
 // console.log(alphabetScramble(testString1, testString2, testString3));
+// console.log(betterAlpabetSoup(testString1, testString2, testString3));
+
 
 // ------------------------------------- Consider the variables:
 var amounts = [9, 1, 8, 16, 5, 1, 42]
@@ -118,8 +150,16 @@ const mergeArraysToString = (arr1, arr2) => {
       return newArr.join(" ")
   }
 
+  const combinedArrays = (arr1, arr2) => {
+        let combined = arr1.map((v,i) => {
+          return v + " " + arr2[i]
+        })
+        return combined.join(" ");
+}
+
 // Sanity check for mergeArraysToString()
 // console.log(mergeArraysToString(amounts, animals));
+// console.log(combinedArrays(amounts, animals));
 
 // 5b. STRETCH: Create a function that combines the two variables and updates the animal to be singular if the animal's corresponding number is 1. Expected output: "9 ducks 1 elephant 8 pangolins 16 zebras 5 giraffes 1 penguin 42 llamas"
 
@@ -139,5 +179,16 @@ const mergeArraysToSingularString = (arr1, arr2) => {
       return newArr.join(" ")
   }
 
+  const combinedArraysAgain = (arr1, arr2) => {
+          let combined = arr1.map((v,i) => {
+              if (v === 1) {
+                  return `1 ${arr2[i].slice(0, arr2[i].length - 1)}`
+              } else { return v + " " + arr2[i]}
+          })
+          return combined.join(" ");
+  }
+
+
 // Sanity check for mergeArraysToSingularString()
 // console.log(mergeArraysToSingularString(amounts, animals));
+console.log(combinedArraysAgain(amounts, animals));
